@@ -20,20 +20,18 @@
 		<div id="date"></div>
 		<div class="clear"></div>
 	</div>
-	<form action="/sign" method="post" id="content">
+	<form action="/send" method="post" id="content">
 		<textarea name="content" placeholder="Leave some message!"></textarea>
 		<input type="submit" value="GO !">
-		<span id="username">from sodas</span><span id="userAction"><a href=""{{ logout }}>logout</a></span>
+		<span id="username">from {{ username }}</span><span id="userAction"><a href="{{ logout }}">logout</a></span>
 	</form>	
 	<div id="board">
+		{% for msg in messages %}
 		<div class="post">
-			<div class="postBody">Bingo! As the tsunami warning sirens sounded, Tsuna Kimura looked for any means of </div>
-			<div><span class="postAuthor">sodas</span><span class="postTime">Thu Mar 17 2011</span></div>
+			<div class="postBody">{{ msg.content|escape }}</div>
+			<div><span class="postAuthor">{{ msg.author }}</span><span class="postTime">{{ msg.date|twtz|date:"h:i:s A, D, d M. 'y" }}</span></div>
 		</div>
-		<div class="post">
-			<div class="postBody">XD</div>
-			<div><span class="postAuthor">ggm</span><span class="postTime">Thu Mar 17 2011</span></div>
-		</div>
+		{% endfor %}
 	</div>
 </body>
 </html>

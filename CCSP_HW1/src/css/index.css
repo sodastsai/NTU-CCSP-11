@@ -85,9 +85,9 @@ header {
 .post {
 	border-bottom: 1px solid #333;
 	padding: 15px 0;
-	margin: 20px 0 10px 0;
+	margin: 10px 0;
 }
-.postBody { margin: 40px 0 20px 0; font-size: 2em; font-weight: 300; }
+.postBody { margin: 30px 0 20px 0; font-size: 2em; font-weight: 300; }
 .postAuthor, .postTime { padding: 2px 10px; border-radius: 2px; margin-right: 5px; }
 .postAuthor { background: #fe7000; color: #FFF; }
 .postTime { background: #ffbd01; color: #444; }
