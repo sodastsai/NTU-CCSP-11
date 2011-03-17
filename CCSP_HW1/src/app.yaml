@@ -6,6 +6,10 @@ api_version: 1
 handlers:
 
 # CSS/javascript
+- url: /css
+  static_dir: css
+- url: /js
+  static_dir: js
 
 # Main Page
 - url: /.*
