@@ -5,8 +5,12 @@ from google.appengine.api import users
 from google.appengine.ext import webapp, db
 from google.appengine.ext.webapp import template
 from google.appengine.ext.webapp.util import run_wsgi_app
+from django.utils import simplejson as json
 
 import os
+from datetime import timedelta 
+
+from twtz.TaiwanTimezone import TaiwanTimeZone
 
 ## Timezone filter
 template.register_template_library('twtz.DjangoTwtz')
@@ -39,14 +43,20 @@ class MainPage(webapp.RequestHandler):
         
 class Guestbook(webapp.RequestHandler):
     def post(self):
+        # write to db
         msg = Message()
         if users.get_current_user():
             msg.author = users.get_current_user()
         
         msg.content = self.request.get('content')
         msg.put()
-        self.redirect('/')
+        # date convertion
+        date = (msg.date+timedelta(hours=8)).replace(tzinfo=TaiwanTimeZone()).strftime("%I:%M %p, %a, %d %b. '%y")
+        # return js for ajax
+        msgDict = {"author":msg.author.nickname(), "content": msg.content, "date": date}
+        self.response.out.write(json.dumps(msgDict))
         
+
 class NotFound(webapp.RequestHandler):
     def get(self):
         self.redirect("/")

@@ -20,7 +20,7 @@
 		<div id="date"></div>
 		<div class="clear"></div>
 	</div>
-	<form action="/send" method="post" id="content">
+	<form action="/" method="post" id="content" onsubmit="return false;">
 		<textarea name="content" placeholder="Leave some message!"></textarea>
 		<input type="submit" value="GO !">
 		<span id="username">from {{ username }}</span><span id="userAction"><a href="{{ logout }}">logout</a></span>
@@ -29,7 +29,7 @@
 		{% for msg in messages %}
 		<div class="post">
 			<div class="postBody">{{ msg.content|escape }}</div>
-			<div><span class="postAuthor">{{ msg.author }}</span><span class="postTime">{{ msg.date|twtz|date:"h:i:s A, D, d M. 'y" }}</span></div>
+			<div><span class="postAuthor">{{ msg.author }}</span><span class="postTime">{{ msg.date|twtz|date:"h:i A, D, d M. 'y" }}</span></div>
 		</div>
 		{% endfor %}
 	</div>
