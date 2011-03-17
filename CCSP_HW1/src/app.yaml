@@ -1,0 +1,12 @@
+application: ccsp-hw1
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+
+# CSS/javascript
+
+# Main Page
+- url: /.*
+  script: MainHandler.py
