@@ -46,6 +46,11 @@ footer {
 	color: #FFF;
 	border-radius: 5px;
 }
+#info.chrome { background: #99b500; }
+#info.safari {}
+#info.firefox { background: #338d2c; }
+#info.opera { background: #43b7bb; }
+#info.msie { background: #a3620a; }
 #weather { float: right; }
 #date { float: left; }
 
