@@ -13,6 +13,7 @@
     <script src="/js/index.c.js" type="text/javascript"></script>
 </head>
 <body>
+	<div id="loading">Loading...</div>
 	<header>CCSP HW1</header>
 	<div id="info">
 		<div id="weather"></div>
@@ -26,9 +27,9 @@
 	</form>	
 	<div id="board">
 		{% for msg in messages %}
-		<div class="post">
+		<div class="post" id="post_{{ msg.key }}">
 			<div class="postBody">{{ msg.content|escape }}</div>
-			<div><span class="postAuthor">{{ msg.author }}</span><span class="postTime">{{ msg.date|twtz|date:"h:i A, D, d M. 'y" }}</span></div>
+			<div><span class="postAuthor">{{ msg.author }}</span><span class="postTime">{{ msg.date|twtz|date:"h:i A, D, d M. 'y" }}</span><span id="{{ msg.key }}" class="postDelete">erase</span></div>
 		</div>
 		{% endfor %}
 	</div>

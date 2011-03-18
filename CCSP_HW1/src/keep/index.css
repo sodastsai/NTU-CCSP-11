@@ -38,6 +38,22 @@ footer {
 	text-align: right;
 }
 
+#loading {
+	background: #fe7000;
+	color: #FFF;
+	position: fixed;
+	top: -15px;
+	left: 50%;
+	padding: 30px 25px 15px 25px;
+	margin-left: -10%;
+	width: 10%;
+	text-align: center;
+	font-weight: bold;
+	font-size: 1.2em;
+	border-radius: 10px;
+	display: none;
+}
+
 #info {
 	margin: 10px 0;
 	padding: 10px;
@@ -101,6 +117,8 @@ footer {
 	margin: 10px 0;
 }
 .postBody { margin: 30px 0 20px 0; font-size: 2em; font-weight: 300; }
-.postAuthor, .postTime { padding: 2px 10px; border-radius: 2px; margin-right: 5px; }
+.postAuthor, .postTime, .postDelete { padding: 2px 10px; border-radius: 2px; margin-right: 5px; }
 .postAuthor { background: #fe7000; color: #FFF; }
 .postTime { background: #ffbd01; color: #444; }
+.postDelete { background: #666; color: #FFF; cursor: pointer; }
+.postDelete.hover { background: #fd0126; color: #FFF; }
