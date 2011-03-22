@@ -24,12 +24,14 @@ body {
 	color: #444;
 }
 
+/* Page title */
 header {
 	color: #444;
 	font-size: 2.5em;
 	font-weight: bold;
 }
 
+/* Copyright */
 footer {
 	margin: 20px 0;
 	padding: 5px 0;
@@ -38,6 +40,7 @@ footer {
 	text-align: right;
 }
 
+/* Loading hint */
 #loading {
 	background: #fe7000;
 	color: #FFF;
@@ -54,6 +57,7 @@ footer {
 	display: none;
 }
 
+/* Information bar (date and weather) */
 #info {
 	margin: 10px 0;
 	padding: 10px;
@@ -62,14 +66,16 @@ footer {
 	color: #FFF;
 	border-radius: 5px;
 }
+#weather { float: right; }
+#date { float: left; }
+/* Browser difference */
 #info.chrome { background: #99b500; }
 #info.safari {}
 #info.firefox { background: #338d2c; }
 #info.opera { background: #43b7bb; }
 #info.msie { background: #a3620a; }
-#weather { float: right; }
-#date { float: left; }
 
+/* Input Field */
 #content {
 	width: 100%-30px;
 	margin: 10px auto;
@@ -77,6 +83,7 @@ footer {
 	background: #67cdf8;
 	border-radius: 10px;
 }
+/* Input Field - Textbox */
 #content textarea {
 	width: 98%;
 	height: 50px;
@@ -89,6 +96,7 @@ footer {
 	resize: none;
 	overflow: auto;
 }
+/* Input Field - Button */
 #content input[type="submit"] {
 	padding: 5px 15px;
 	margin-top: 10px;
@@ -100,8 +108,10 @@ footer {
 	font-weight: 900;
 	cursor: pointer;
 }
+/* Input Field - Button Effect */
 #content input[type="submit"].hover { background: #ffbd01; }
 
+/* User information */
 #username { font-size: 1.25em; }
 #userAction {
 	display: inline-block;
@@ -111,6 +121,7 @@ footer {
 #userAction a { color: #555; text-decoration: none; }
 #userAction a:hover { color: #222; text-decoration: underline; }
 
+/* Message style */
 .post {
 	border-bottom: 1px solid #333;
 	padding: 15px 0;
