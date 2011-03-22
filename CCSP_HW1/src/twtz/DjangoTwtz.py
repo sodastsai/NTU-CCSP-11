@@ -1,3 +1,5 @@
+## http://practicalappengine.blogspot.com/2010_08_01_archive.html
+# Use django 1.2
 from google.appengine.dist import use_library
 use_library('django', '1.2')
 
@@ -12,4 +14,5 @@ register = template.create_template_register()
 @register.filter  
 def twtz(value):    
     return (value + timedelta(hours=8)).replace(tzinfo=TaiwanTimeZone())
+
 register.filter(twtz)

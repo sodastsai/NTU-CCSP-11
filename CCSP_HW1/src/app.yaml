@@ -6,6 +6,8 @@ api_version: 1
 handlers:
 
 # CSS/javascript
+# Files in "keep" are original files.
+# css/js directories save compressed data.
 - url: /css
   static_dir: css
 - url: /js

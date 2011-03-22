@@ -4,6 +4,7 @@ use_library('django', '1.2')
 
 from datetime import tzinfo, timedelta 
 
+## Taiwan time zone of tzinfo
 class TaiwanTimeZone(tzinfo):  
     def utcoffset(self, dt):  #@UnusedVariable
         return timedelta(hours=8)  
