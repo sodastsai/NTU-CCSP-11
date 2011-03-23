@@ -1,0 +1,18 @@
+application: mmaiphototype
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+
+# CSS/javascript
+# Files in "keep" are original files.
+# css/js directories save compressed data.
+- url: /css
+  static_dir: css
+- url: /js
+  static_dir: js
+
+# Main Page
+- url: /.*
+  script: MainHandler.py
