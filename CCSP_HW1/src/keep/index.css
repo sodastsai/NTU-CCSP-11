@@ -133,3 +133,12 @@ footer {
 .postTime { background: #ffbd01; color: #444; }
 .postDelete { background: #666; color: #FFF; cursor: pointer; }
 .postDelete.hover { background: #fd0126; color: #FFF; }
+
+/* Homework Note*/
+#hwNote {
+	padding: 5px;
+	font-size: .85em;
+	font-style: italic;
+	text-align: right;
+	color: #777;
+}
