@@ -1,5 +1,5 @@
 // Show information in information bar
-// Data is come from webservice api
+// Data is come from webservice api with jsonp
 function showInfo(data) {
 	// today's date
 	var date = new Date();
@@ -9,7 +9,7 @@ function showInfo(data) {
 	$("#weather").html(weatherStr);
 }
 
-// Delete Button as jQuery plugin
+// Register Delete Button as jQuery plugin
 $.fn.deleteBtn = function() {
     return this.each(function() {
     	$(this).click(function(){
@@ -83,19 +83,12 @@ $(document).ready(function(){
 				$("textarea[name='content']").val("");
 				// Close loading hint
 				$("#loading").slideUp();
-				// Show data from AJAX Result
-				// New a message tag
-				$("#board").prepend("<div class=\"post\"></div>");
-				// Make basic structure
-				$("#board div.post:first").append("<div class=\"postBody\" id=\"post_"+response["key"]+"\"></div>").hide();
-				$("#board div.post:first").append("<div><span class=\"postAuthor\"></span><span class=\"postTime\"></span><span class=\"postDelete\">erase</span></div>");
-				// Fill data and activate action
-				$("#board div.post:first .postBody").html(response["content"]);
-				$("#board div.post:first .postAuthor").html(response["author"]);
-				$("#board div.post:first .postTime").html(response["date"]);
-				$("#board div.post:first .postDelete").attr("id",response["key"]).deleteBtn();
+				// Render data from AJAX Result with jQuery Template
+				$( "#jQTmpl_message" ).tmpl(response).prependTo("#board");
+				// Activate erase button
+				$("#board div.post:first .postDelete").deleteBtn();
 				// Show the new message
-				$("#board div.post:first").slideDown();
+				$("#board div.post:first").hide().slideDown();
 			}
 		});
 	});

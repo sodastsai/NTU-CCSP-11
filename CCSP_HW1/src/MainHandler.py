@@ -1,3 +1,6 @@
+import os
+from datetime import timedelta
+
 # Use django 1.2
 from google.appengine.dist import use_library
 use_library('django', '1.2')
@@ -6,10 +9,7 @@ from google.appengine.api import users
 from google.appengine.ext import webapp, db
 from google.appengine.ext.webapp import template
 from google.appengine.ext.webapp.util import run_wsgi_app
-from django.utils import simplejson as json
-
-import os
-from datetime import timedelta 
+from django.utils import simplejson as json 
 
 from twtz.TaiwanTimezone import TaiwanTimeZone
 
@@ -28,7 +28,7 @@ class MainPage(webapp.RequestHandler):
         # Get user information
         user = users.get_current_user()
         if user is None:
-            # Not logged
+            # Not logged in
             self.redirect(users.create_login_url(self.request.uri))
             return
         
@@ -55,7 +55,7 @@ class WriteBook(webapp.RequestHandler):
         # Write!
         key = msg.put()
         
-        # date convert for display
+        # convert date for display
         date = (msg.date+timedelta(hours=8)).replace(tzinfo=TaiwanTimeZone()).strftime("%I:%M %p, %a, %d %b. '%y")
         # return json for ajax
         msgDict = {"author":msg.author.nickname(), "content": msg.content, "date": date, "key": str(key)}
@@ -77,11 +77,16 @@ class NotFound(webapp.RequestHandler):
     def get(self):
         self.redirect("/")
 
-# Webapp object
-application = webapp.WSGIApplication([('/', MainPage), ('/send', WriteBook), ('/delete', DeleteBook), ('/.*', NotFound)], debug=True)
+## Webapp object
+application = webapp.WSGIApplication([('/', MainPage),
+                                      ('/send', WriteBook),
+                                      ('/delete', DeleteBook),
+                                      ('/.*', NotFound)], debug=True)
 
+## Memcached main function
 def main():
     run_wsgi_app(application)
 
+# Check self
 if __name__ == "__main__":
     main()
